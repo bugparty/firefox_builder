@@ -17,4 +17,5 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: sudo apt-get update && sudo apt-get install -y python3 python3-pip python3-distutils python3-apt curl wget git mercurial diffutils vim build-essential libpython3-dev m4 unzip uuid zip python3-dev libssl-dev libffi-dev python3-setuptools  python3-wheel python3-cffi ccache libtinfo5 libncurses5
-
+      - run: curl https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py -O
+      - run: python3 bootstrap.py --vcs=git
