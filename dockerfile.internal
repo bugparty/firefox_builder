@@ -1,4 +1,12 @@
 FROM ubuntu:22.04
+RUN echo '\
+deb <mirror> <version> main restricted universe multiverse\n\
+deb <mirror> <version>-updates main restricted universe multiverse\n\
+deb <mirror> <version>-backports main restricted universe multiverse\n\
+deb <mirror> <version>-security main restricted universe multiverse\n'\
+> /etc/apt/sources.list
+RUN sed -ie 's|<mirror>|http://192.168.1.88/ubuntu/|' /etc/apt/sources.list
+RUN sed -ie 's|<version>|jammy|' /etc/apt/sources.list
 RUN apt-get update && apt-get install -y \
     python3 python3-pip python3-distutils python3-apt \
     curl wget git mercurial diffutils vim build-essential libpython3-dev m4 unzip uuid zip \
