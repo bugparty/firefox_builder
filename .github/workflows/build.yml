@@ -11,7 +11,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Cache mozbuild
-        id: cache mozbuild
+        id: cache-mozbuild
         uses: actions/cache@v3
         with:
           path: |
