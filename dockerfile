@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y \
     python3-setuptools \
     python3-wheel \
     python3-cffi \
-    sudo ccache libtinfo5 libncurses5
+    sudo ccache libtinfo5 libncurses5 libxml2-dev
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000
