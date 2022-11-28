@@ -33,3 +33,4 @@ jobs:
       #- run: curl https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py -O
       # - run: python3 bootstrap.py --vcs=git --no-interactive --application-choice=4
       - run: ./mach --no-interactive  bootstrap --application-choice="GeckoView/Firefox for Android"
+      - run: ./mach busted
