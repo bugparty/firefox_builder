@@ -25,5 +25,8 @@ RUN groupadd -g ${GROUP_ID} bowman &&\
     useradd -l -u ${USER_ID} -g bowman bowman &&\
     install -d -m 0755 -o bowman -g bowman /home/bowman
 RUN echo "bowman ALL=NOPASSWD: /usr/bin/apt,/usr/bin/apt-get" >> /etc/sudoers
+ADD ./.bash_aliases /home/bowman/.bash_aliases
+ADD ./.bashrc /home/bowman/.bashrc
+ADD gradle.tar.gz /home/bowman/
 USER bowman
 WORKDIR /home/bowman
