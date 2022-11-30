@@ -2,7 +2,7 @@ name: docker build
 run-name: docker build 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  build:
     runs-on: ubuntu-latest
     steps:
       - run: df -h
@@ -38,3 +38,13 @@ jobs:
             ls ~/.mozbuild/git-cinnabar/
             export PATH=~/.mozbuild/git-cinnabar:$PATH
             ./mach build
+  notify:
+    if: cancelled() == false
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: up9cloud/action-notify@master
+        env:
+          GITHUB_JOB_STATUS: ${{ needs.deploy.result }}
+          TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
+          TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
