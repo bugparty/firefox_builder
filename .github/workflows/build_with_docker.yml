@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+name: docker build
+run-name: docker build 🚀
 on: [push]
 jobs:
   Explore-GitHub-Actions:
@@ -11,7 +11,6 @@ jobs:
       - name: Maximize build space
         uses: easimon/maximize-build-space@master
         with:
-          root-reserve-mb: 512
           swap-size-mb: 1024
           remove-dotnet: 'true'
           remove-android: 'true'
