@@ -10,7 +10,6 @@ jobs:
       - run: sudo rm -rf /usr/local/lib/android
       - run: sudo rm -rf /opt/ghc
       - run: sudo rm -rf /usr/local/share/edge_driver /usr/local/share/chrome_driver
-      - run: docker system prune -a -f
       - run: |
           sudo apt-get remove -y '^dotnet-.*'
           sudo apt-get remove -y '^llvm-.*'
