@@ -10,6 +10,10 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
+        with:
+          repository: bugparty/gecko-dev
+          ref: aprara_dev
+          fetch-depth: 1
       - name: Cache mozbuild
         id: cache-mozbuild
         uses: actions/cache@v3
@@ -18,7 +22,6 @@ jobs:
               .mozbuild
               .android
               .avd
-              mozilla-unified
           key: ${{ runner.os }}-mozbuild
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
@@ -27,5 +30,6 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
       - run: sudo apt-get update && sudo apt-get install -y python3 python3-pip python3-distutils python3-apt curl wget git mercurial diffutils vim build-essential libpython3-dev m4 unzip uuid zip python3-dev libssl-dev libffi-dev python3-setuptools  python3-wheel python3-cffi ccache libtinfo5 libncurses5
-      - run: curl https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py -O
-      - run: python3 bootstrap.py --vcs=git --no-interactive --application-choice=4
+      #- run: curl https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py -O
+      # - run: python3 bootstrap.py --vcs=git --no-interactive --application-choice=4
+      - run: ./mach --no-interactive  bootstrap --application-choice="GeckoView/Firefox for Android"
