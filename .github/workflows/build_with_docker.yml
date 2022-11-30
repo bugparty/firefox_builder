@@ -34,5 +34,5 @@ jobs:
           run: |
             echo "Running Script"
             cd gecko_dev
-            ls -l
+            git config --global --add safe.directory /home/bowman/gecko_dev
             ./mach build
