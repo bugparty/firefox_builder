@@ -10,4 +10,16 @@ jobs:
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: docker pull bowmanhan/gecko_builder:latest
+        with:
+          repository: bugparty/gecko-dev
+          ref: aprara_dev
+      - uses: addnab/docker-run-action@v3
+        with:
+          registry: registry.docker.com
+          image: bowmanhan/gecko_builder:latest
+          options: -v ${{ github.workspace }}:/home/bowman/gecko_dev
+          run: |
+            echo "Running Script"
+            cd gecko_dev
+            ls -l
+            ./mach build
