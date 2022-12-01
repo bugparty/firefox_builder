@@ -1,4 +1,4 @@
-name: Sync dockerhub image to github
+name: pull image test
 run-name: ${{ github.actor }} is sync docker image 🚀
 on: workflow_dispatch
 env:
