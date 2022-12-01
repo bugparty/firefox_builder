@@ -17,3 +17,13 @@ jobs:
       - run: docker pull bowmanhan/gecko_builder:latest
       - run: docker tag bowmanhan/gecko_builder:latest ghcr.io/${{ github.actor }}/gecko_builder:latest
       - run: docker push ghcr.io/${{ github.actor }}/gecko_builder:latest
+  notify:
+    if: cancelled() == false
+    needs: sync-image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: up9cloud/action-notify@master
+        env:
+          GITHUB_JOB_STATUS: ${{ needs.deploy.result }}
+          TELEGRAM_BOT_TOKEN: ${{secrets.TELEGRAM_BOT_TOKEN}}
+          TELEGRAM_CHAT_ID: ${{secrets.TELEGRAM_CHAT_ID}}
