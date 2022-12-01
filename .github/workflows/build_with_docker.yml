@@ -10,15 +10,6 @@ jobs:
       - run: sudo rm -rf /usr/local/lib/android
       - run: sudo rm -rf /opt/ghc
       - run: sudo rm -rf /usr/local/share/edge_driver /usr/local/share/chrome_driver
-      - run: |
-          sudo apt-get remove -y '^dotnet-.*'
-          sudo apt-get remove -y '^llvm-.*'
-          sudo apt-get remove -y 'php.*'
-          sudo apt-get remove -y '^mongodb-.*'
-          sudo apt-get remove -y '^mysql-.*'
-          sudo apt-get remove -y azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel libgl1-mesa-dri
-          sudo apt-get autoremove -y
-          sudo apt-get clean
       - run: df -h
            
       - name: Check out repository code
@@ -28,15 +19,13 @@ jobs:
           ref: aprara_dev
       - uses: addnab/docker-run-action@v3
         with:
-          registry: registry.docker.com
-          image: bowmanhan/gecko_builder:latest
+          registry: ghcr.io
+          image: ghcr.io/bugparty/gecko_builder:latest
           options: -v ${{ github.workspace }}:/home/bowman/gecko_dev
           run: |
             echo "Running Script"
             cd gecko_dev
             git config --global --add safe.directory /home/bowman/gecko_dev
-            ls ~/.mozbuild/git-cinnabar/
-            export PATH=~/.mozbuild/git-cinnabar:$PATH
             ./mach build
   notify:
     if: cancelled() == false
