@@ -1,0 +1,3 @@
+export MOZ_PATH=/home/bowman
+export MOZBUILD_STATE_PATH="${MOZ_PATH}/.mozbuild"
+export PATH="${MOZ_PATH}/.mozbuild/git-cinnabar:$PATH"
