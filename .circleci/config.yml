@@ -28,7 +28,11 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
-      - checkout
+      - run:
+          command: git clone --depth=1 https://github.com/bugparty/gecko-dev.git
+      - run:
+          command: cd gecko-dev && git checkout aprara
+
       - run:
           name: Run build
           # This assumes pytest is installed via the install-package step above
