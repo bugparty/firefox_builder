@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: df -h
-      - run: sudo rm -rf /usr/share/dotnet 
+      - run: sudo rm -rf /usr/share/dotnet
       - run: sudo rm -rf /usr/local/lib/android
       - run: sudo rm -rf /opt/ghc
       - run: sudo rm -rf /usr/local/share/edge_driver /usr/local/share/chrome_driver
@@ -26,6 +26,7 @@ jobs:
             echo "Running Script"
             cd gecko_dev
             git config --global --add safe.directory /home/bowman/gecko_dev
+            ./mach --no-interactive  bootstrap --application-choice="GeckoView/Firefox for Android"
             ./mach build
   notify:
     if: cancelled() == false
