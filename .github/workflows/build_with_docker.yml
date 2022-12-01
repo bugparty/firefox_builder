@@ -25,7 +25,6 @@ jobs:
           run: |
             echo "Running Script"
             cd gecko_dev
-            git config --global --add safe.directory /home/bowman/gecko_dev
             ./mach build
   notify:
     if: cancelled() == false
