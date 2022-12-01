@@ -8,6 +8,10 @@ jobs:
   sync-image:
     runs-on: ubuntu-latest
     steps:
+      - run: sudo rm -rf /usr/share/dotnet
+      - run: sudo rm -rf /usr/local/lib/android
+      - run: sudo rm -rf /opt/ghc
+      - run: sudo rm -rf /usr/local/share/edge_driver /usr/local/share/chrome_driver
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
