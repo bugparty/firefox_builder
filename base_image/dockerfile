@@ -1,0 +1,6 @@
+FROM ubuntu:22.04
+RUN mkdir -p /home/bowman
+ADD ./bash_aliases_public /home/bowman/.bash_aliases
+ADD ./.bashrc /home/bowman/.bashrc
+ADD gradle.tar.gz /home/bowman/
+ADD ./mozbuild.tar.gz /home/bowman/
