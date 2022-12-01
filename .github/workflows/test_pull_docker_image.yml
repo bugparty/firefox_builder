@@ -1,11 +1,11 @@
 name: pull image test
-run-name: ${{ github.actor }} is sync docker image 🚀
+run-name: ${{ github.actor }} is pulling docker image 🚀
 on: workflow_dispatch
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 jobs:
-  sync-image:
+  pull-image:
     runs-on: ubuntu-latest
     steps:
       - name: pull image test
