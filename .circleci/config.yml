@@ -27,10 +27,12 @@ jobs:
     # CircleCI will report the results back to your VCS provider.
     steps:
       - run: git clone --depth=1 https://github.com/bugparty/gecko-dev.git
-      - run: pwd && ls 
-      - run: cd gecko-dev
-      - run: git branch
-      - run: git checkout aprara
+      - run: 
+          working_directory: ./gecko-dev
+          command: git branch
+      - run: 
+          working_directory: ./gecko-dev
+          command: git checkout aprara
 
       - run:
           name: Run build
