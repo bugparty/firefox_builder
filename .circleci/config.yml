@@ -28,10 +28,9 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
-      - run:
-          command: git clone --depth=1 https://github.com/bugparty/gecko-dev.git
-      - run:
-          command: cd gecko-dev && git checkout aprara
+      - run: git clone --depth=1 https://github.com/bugparty/gecko-dev.git
+      - run: pwd && ls 
+      - run: cd gecko-dev && git checkout aprara
 
       - run:
           name: Run build
