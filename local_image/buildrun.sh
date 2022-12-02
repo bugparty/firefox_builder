@@ -1,5 +1,5 @@
 #!/bin/bash
-docker build -t firefox -f dockerfile.internal .
+docker build -t firefox -f dockerfile .
 # -v /home/bowman/.mozbuild:/home/bowman/.mozbuild \
 docker run -it --rm -v /home/bowman/.mozbuild:/home/bowman/.mozbuild \
  -v /home/bowman/.rustup:/home/bowman/.rustup \
