@@ -18,7 +18,7 @@ jobs:
     # These next lines defines a Docker executors: https://circleci.com/docs/2.0/executor-types/
     
     docker:
-      - image: bowmanhan/gecko_builder:latest
+      - image: ghcr.io/bugparty/gecko_builder:latest
     resource_class: large
     # Checkout the code as the first step. This is a dedicated CircleCI step.
     # The python orb's install-packages step will install the dependencies from a Pipfile via Pipenv by default.
