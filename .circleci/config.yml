@@ -26,12 +26,9 @@ jobs:
     # Then run your tests!
     # CircleCI will report the results back to your VCS provider.
     steps:
+      - checkout
       - run: git clone --depth=1 -b aprara_dev https://github.com/bugparty/gecko-dev.git
-      - run:
-          name: Run bootstrap
-          working_directory: ./gecko-dev
-          # This assumes pytest is installed via the install-package step above
-          command: ./mach --no-interactive  bootstrap --application-choice="GeckoView/Firefox for Android"
+      - run: cp mozconfig ./gecko-dev/
       - run: 
           name: Run build
           working_directory: ./gecko-dev
